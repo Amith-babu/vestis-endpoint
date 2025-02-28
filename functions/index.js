@@ -10,7 +10,7 @@ async function process(context) {
   const envData = await context.env;
   const requestOrigin = context.request.headers.get("Origin");
   //REQUEST_ORGIN=https://extensions.shopifycdn.com
-  if (!(await checkOrigin(env.REQUEST_ORGIN, requestOrigin))) {
+  if (!(await checkOrigin(envData.REQUEST_ORGIN, requestOrigin))) {
     return new Response("Authentication Error : Invalid Origin", {
       status: 403,
       headers: { "Content-Type": "application/json" },
